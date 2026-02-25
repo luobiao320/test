@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Maven</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 48px 64px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .15);
+            text-align: center;
+        }
+        #message {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            transition: opacity .3s;
+        }
+        #message.loading { opacity: .4; }
+        .sub {
+            margin-top: 12px;
+            font-size: .9rem;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div id="message" class="loading">Loading...</div>
+        <div class="sub">from /hello API</div>
+    </div>
+    <script>
+        fetch('/hello')
+            .then(function (res) { return res.text(); })
+            .then(function (text) {
+                var el = document.getElementById('message');
+                el.textContent = text;
+                el.classList.remove('loading');
+            })
+            .catch(function (err) {
+                document.getElementById('message').textContent = 'Failed to load';
+            });
+    </script>
+</body>
+</html>

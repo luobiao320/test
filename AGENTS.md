@@ -16,12 +16,19 @@ This is a Java Maven project (`simple-maven-project`). The application entry poi
 | Build | `mvn compile` |
 | Test | `mvn test` |
 | Package | `mvn package` |
-| Run | `java -cp target/simple-maven-project-1.0-SNAPSHOT.jar com.example.App` |
+| Dev run | `mvn spring-boot:run` |
 | Clean | `mvn clean` |
+
+### API endpoints
+
+| Method | Path | Response |
+|--------|------|----------|
+| GET | `/hello` | `Hello Maven!` (text/plain) |
 
 ### Notes
 
-- The project targets Java 1.8 source/target but compiles fine on JDK 21.
-- JUnit 4.13.2 is the only dependency (test scope).
+- Spring Boot 3.2.5 on Java 17+ (JDK 21 pre-installed).
+- `mvn spring-boot:run` 启动后默认监听 `http://localhost:8080`。
+- JUnit 5 via `spring-boot-starter-test`，含 MockMvc 集成测试。
 - No external services, databases, or Docker containers are required.
 - No lint tooling is configured; `mvn compile` serves as the static check (compiler warnings).
